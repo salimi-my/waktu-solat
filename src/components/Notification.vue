@@ -17,7 +17,7 @@
               class="relative transform overflow-hidden rounded-lg bg-white text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-lg">
               <div class="bg-white px-4 pt-5 pb-4 sm:p-8 sm:pb-4">
                 <div class="flex justify-center mb-3">
-                  <InformationCircleIcon class="h-20 w-auto text-green-400" aria-hidden="true" />
+                  <InformationCircleIcon class="h-20 w-auto text-gray-500" aria-hidden="true" />
                 </div>
                 <h1 class="text-center font-semibold text-lg">
                   Waktu Solat hanya bagi Semenanjung Malaysia, Sabah dan Sarawak
