@@ -26,7 +26,7 @@
         <Countdown :until="until" />
         <Zone v-model="state.zone" :bearing="defaultBearing" />
         <Schedule :prayer="prayer" :tomorrow="tomorrow" />
-        <Modal :open="open" @click-event="setOpenTrue" />
+        <Azan :open="open" @click-event="setOpenTrue" />
       </div>
     </div>
     <Footer />
@@ -39,7 +39,7 @@ import { ref, watch } from 'vue'
 import Countdown from './components/Countdown.vue'
 import Zone from './components/Zone.vue'
 import Schedule from './components/Schedule.vue'
-import Modal from './components/Modal.vue'
+import Azan from './components/Azan.vue'
 import Footer from './components/Footer.vue'
 import dayjs from 'dayjs'
 import 'dayjs/locale/ms'
