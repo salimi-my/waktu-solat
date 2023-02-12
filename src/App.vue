@@ -62,7 +62,7 @@ const now = useNow()
 const prayer = ref({
   asr: "00:00:00",
   dhuhr: "00:00:00",
-  fajr: "00:00:00",
+  fajr: "01:15:00",
   imsak: "00:00:00",
   isha: "00:00:00",
   maghrib: "00:00:00",
@@ -102,15 +102,15 @@ watch(now, (now) => {
     currentPrayerTime.value = dayjs(nowDate + ' ' + prayer.value.isha).format('hh:mm A')
   }
 
-  if (dayjs(now.value).isSame(dayjs(nowDate + ' ' + prayer.value.fajr), 'minute')) {
+  if (dayjs(now.value).isSame(dayjs(nowDate + ' ' + prayer.value.fajr), 'second')) {
     open.value = true
-  } else if (dayjs(now.value).isSame(dayjs(nowDate + ' ' + prayer.value.dhuhr), 'minute')) {
+  } else if (dayjs(now.value).isSame(dayjs(nowDate + ' ' + prayer.value.dhuhr), 'second')) {
     open.value = true
-  } else if (dayjs(now.value).isSame(dayjs(nowDate + ' ' + prayer.value.asr), 'minute')) {
+  } else if (dayjs(now.value).isSame(dayjs(nowDate + ' ' + prayer.value.asr), 'second')) {
     open.value = true
-  } else if (dayjs(now.value).isSame(dayjs(nowDate + ' ' + prayer.value.maghrib), 'minute')) {
+  } else if (dayjs(now.value).isSame(dayjs(nowDate + ' ' + prayer.value.maghrib), 'second')) {
     open.value = true
-  } else if (dayjs(now.value).isSame(dayjs(nowDate + ' ' + prayer.value.isha), 'minute')) {
+  } else if (dayjs(now.value).isSame(dayjs(nowDate + ' ' + prayer.value.isha), 'second')) {
     open.value = true
   }
 })
@@ -142,7 +142,7 @@ onFetchResponse(() => {
   hijriDate.value = hijriArray[2] + ' ' + hijriMonths[parseInt(hijriArray[1]) - 1] + ' ' + hijriArray[0]
   prayer.value.asr = data.value.prayerTime[0].asr
   prayer.value.dhuhr = data.value.prayerTime[0].dhuhr
-  prayer.value.fajr = data.value.prayerTime[0].fajr
+  // prayer.value.fajr = data.value.prayerTime[0].fajr
   prayer.value.imsak = data.value.prayerTime[0].imsak
   prayer.value.isha = data.value.prayerTime[0].isha
   prayer.value.maghrib = data.value.prayerTime[0].maghrib
