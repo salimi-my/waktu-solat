@@ -27,6 +27,7 @@
         <Zone v-model="state.zone" :bearing="defaultBearing" />
         <Schedule :prayer="prayer" :tomorrow="tomorrow" />
         <Azan :open="open" @click-event="setOpenTrue" />
+        <Notification :enable="enable" />
       </div>
     </div>
     <Footer />
@@ -41,9 +42,11 @@ import Zone from './components/Zone.vue'
 import Schedule from './components/Schedule.vue'
 import Azan from './components/Azan.vue'
 import Footer from './components/Footer.vue'
+import Notification from './components/Notification.vue'
 import dayjs from 'dayjs'
 import 'dayjs/locale/ms'
 
+const enable = ref(true)
 const open = ref(false)
 const tomorrow = ref(false)
 
@@ -62,7 +65,7 @@ const now = useNow()
 const prayer = ref({
   asr: "00:00:00",
   dhuhr: "00:00:00",
-  fajr: "01:15:00",
+  fajr: "00:00:00",
   imsak: "00:00:00",
   isha: "00:00:00",
   maghrib: "00:00:00",
@@ -142,7 +145,7 @@ onFetchResponse(() => {
   hijriDate.value = hijriArray[2] + ' ' + hijriMonths[parseInt(hijriArray[1]) - 1] + ' ' + hijriArray[0]
   prayer.value.asr = data.value.prayerTime[0].asr
   prayer.value.dhuhr = data.value.prayerTime[0].dhuhr
-  // prayer.value.fajr = data.value.prayerTime[0].fajr
+  prayer.value.fajr = data.value.prayerTime[0].fajr
   prayer.value.imsak = data.value.prayerTime[0].imsak
   prayer.value.isha = data.value.prayerTime[0].isha
   prayer.value.maghrib = data.value.prayerTime[0].maghrib
