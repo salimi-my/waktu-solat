@@ -41,12 +41,16 @@ import dayjs from 'dayjs'
 import { computed } from 'vue';
 
 const props = defineProps({
-  prayer: Object
+  prayer: Object,
+  tomorrow: Boolean
 })
 
-let currentDate = dayjs().format('DD MMMM YYYY')
-
 const prayerDayjs = computed(() => {
+  let currentDate = dayjs().format('DD MMMM YYYY')
+  if (props.tomorrow) {
+    currentDate = dayjs().add(1, 'day').format('DD MMMM YYYY')
+  }
+
   return {
     asr: dayjs(currentDate + ' ' + props.prayer.asr).format('hh:mm A'),
     dhuhr: dayjs(currentDate + ' ' + props.prayer.dhuhr).format('hh:mm A'),
