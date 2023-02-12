@@ -2,7 +2,7 @@
   <div class="w-full md:w-auto ">
     <div class="rounded-xl bg-white/40 backdrop-blur-sm shadow-lg mx-3 md:mx-0 mt-6 py-4 px-5">
       <h4 class="text-center mb-4 font-extrabold text-xl">Jadual Waktu Solat Hari Ini</h4>
-      <div class="grid grid-cols-3 md:grid-cols-7 gap-8">
+      <div class="grid grid-cols-3 md:grid-cols-7 gap-6">
         <div class="flex flex-col justify-center items-center">
           <p class="font-bold text-base">Imsak</p>
           <p>{{ prayerDayjs.imsak }}</p>
