@@ -25,7 +25,7 @@
         <h4 class="text-xl md:text-3xl font-semibold">{{ currentPrayerTime }}</h4>
         <Countdown :until="until" />
         <Zone v-model="state.zone" :bearing="defaultBearing" />
-        <Schedule :prayer="prayer" />
+        <Schedule :prayer="prayer" :tomorrow="tomorrow" />
         <Modal :open="open" @click-event="setOpenTrue" />
       </div>
     </div>
@@ -45,7 +45,7 @@ import dayjs from 'dayjs'
 import 'dayjs/locale/ms'
 
 const open = ref(false)
-const isTomorrow = ref(false)
+const tomorrow = ref(false)
 
 const setOpenTrue = () => {
   open.value = !open.value
@@ -76,7 +76,7 @@ const currentPrayerTime = ref('')
 watch(now, (now) => {
   let nowDate = currentDate
 
-  if (isTomorrow) {
+  if (tomorrow.value) {
     nowDate = dayjs().add(1, 'day').format('DD MMMM YYYY')
   }
 
@@ -133,7 +133,7 @@ const { isFetching, error, data, onFetchResponse } = useFetch(url, { refetch: tr
 onFetchResponse(() => {
   if (dayjs(now.value).isAfter(dayjs(dayjs().format('DD MMMM YYYY') + ' ' + data.value.prayerTime[0].isha))) {
     url.value = 'https://www.e-solat.gov.my/index.php?r=esolatApi/takwimsolat&period=date&zone=' + state.value.zone + '&date=' + dayjs().add(1, 'day').format('YYYY-MM-DD')
-    isTomorrow.value = true
+    tomorrow.value = true
   }
 
   miladiDate.value = dayjs(data.value.prayerTime[0].date).locale('ms').format('DD MMMM YYYY')
