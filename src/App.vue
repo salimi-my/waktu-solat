@@ -2,12 +2,17 @@
   <main class="bg-[url('/src/assets/bg-waktu-solat.webp')] bg-no-repeat bg-cover bg-center">
     <div v-if="error" class="container mx-auto">
       <div class="flex flex-col items-center justify-center h-screen">
-        <h1 class="text-red-700">Error: {{ error }}</h1>
+        <h1 class="text-red-700 text-lg">Error: {{ error }}</h1>
       </div>
     </div>
     <div v-else-if="isFetching" class="container mx-auto">
       <div class="flex flex-col items-center justify-center h-screen">
-        <h1 class="text-red-700">Loading...</h1>
+        <div class="flex items-center justify-center space-x-2">
+          <div class="w-8 h-8 rounded-full animate-pulse bg-gray-500"></div>
+          <div class="w-8 h-8 rounded-full animate-pulse bg-gray-500"></div>
+          <div class="w-8 h-8 rounded-full animate-pulse bg-gray-500"></div>
+          <div class="w-8 h-8 rounded-full animate-pulse bg-gray-500"></div>
+        </div>
       </div>
     </div>
     <div v-else class="container mx-auto">
