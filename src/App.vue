@@ -1,12 +1,12 @@
 <template>
   <main class="bg-[url('/src/assets/bg-waktu-solat.webp')] bg-no-repeat bg-cover bg-center">
     <div v-if="error" class="container mx-auto">
-      <div class="flex flex-col items-center justify-center h-screen">
+      <div class="flex flex-col items-center justify-center h-[calc(100vh-36px)] min-h-[736px] mb-3">
         <h1 class="text-red-700 text-lg">Error: {{ error }}</h1>
       </div>
     </div>
     <div v-else-if="isFetching" class="container mx-auto">
-      <div class="flex flex-col items-center justify-center h-screen">
+      <div class="flex flex-col items-center justify-center h-[calc(100vh-36px)] min-h-[736px] mb-3">
         <div class="flex items-center justify-center space-x-2">
           <div class="w-8 h-8 rounded-full animate-pulse bg-gray-500"></div>
           <div class="w-8 h-8 rounded-full animate-pulse bg-gray-500"></div>
@@ -27,7 +27,7 @@
         <Zone v-model="state.zone" :bearing="defaultBearing" />
         <Schedule :prayer="prayer" :tomorrow="tomorrow" />
         <Azan :open="open" @click-event="setOpenTrue" />
-        <Notification :enable="enable" />
+        <Notification :enable="enable" @enable-event="setEnableTrue" />
       </div>
     </div>
     <Footer />
@@ -52,6 +52,10 @@ const tomorrow = ref(false)
 
 const setOpenTrue = () => {
   open.value = !open.value
+};
+
+const setEnableTrue = () => {
+  enable.value = !enable.value
 };
 
 const hijriMonths = ["Muharram", "Safar", "Rabiul Awal", "Rabiul Akhir", "Jamadil Awal", "Jamadil Akhir", "Rejab",
