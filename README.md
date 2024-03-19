@@ -37,7 +37,7 @@ npm run build
 
 ## Demo
 
-Hosted the app anywhere you want. [Click here](https://solat.salimi.my) to visit.
+Hosted privately on personal DigitalOcean Droplet. [Click here](https://solat.salimi.my) to visit.
 <br>
 Direct link: `https://solat.salimi.my`
 
